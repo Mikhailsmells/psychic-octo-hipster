@@ -345,65 +345,69 @@ if(threatened[i].toString().charAt(1)=='N')
 				Point[] moves=new Point[100];
 				int numBishop=0;
 				for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y+i-x<8 && y+i-x>=0){
-					if(aiarr[i][y+i-x].toString().charAt(0)=='B'){
-						moves[numBishop]=new Point(i,y+i-x);
+					int l=i;
+					if(y+l-x<8 && y+l-x>=0){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 						i=8;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(0)=='W'){
+					else if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 						i=8;
 					}
-					if(aiarr[i][(int)a.getY()+i-x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y+i-x);
+					if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y-i+x<8 && y-i+x>=0){
-					if(aiarr[i][y-i+x].toString().charAt(0)=='B'){
-						moves[numBishop]=new Point(i,y-i+x);
+					int l=i;
+					if(y-l+x<8 && y-l+x>=0){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 						i=8;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(0)=='W'){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 						i=8;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y-i+x);
+					if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y+i-x<8 && y+i-x>=0){
-					if(aiarr[i][y+i-x].toString().charAt(0)=='B'){
-						moves[numBishop]=new Point(i,y+i-x);
+					int l=i;
+					if(y+l-x<8 && y+l-x>=0){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 						i=-1;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(0)=='W'){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 						i=-1;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y+i-x);
+					if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y-i+x<8 && y-i+x>=0){
-					if(aiarr[i][y-i+x].toString().charAt(0)=='B'){
-						moves[numBishop]=new Point(i,y-i+x);
+					int l=i;
+					if(y-l+x<8 && y-l+x>=0){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 						i=-1;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(0)=='W'){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 						i=-1;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y-i+x);
+					if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 					}
 					}
@@ -414,65 +418,69 @@ if(threatened[i].toString().charAt(1)=='N')
 				Point[] moves=new Point[100];
 				int numBishop=0;
 				for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y+i-x<8 && y+i-x>=0){
-					if(aiarr[i][y+i-x].toString().charAt(0)=='W'){
-						moves[numBishop]=new Point(i,y+i-x);
+					int l=i;
+					if(y+l-x<8 && y+l-x>=0){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 						i=8;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(0)=='B'){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
 						i=8;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y+i-x);
+					if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y-i+x<8 && y-i+x>=0){
-					if(aiarr[i][y-i+x].toString().charAt(0)=='W'){
-						moves[numBishop]=new Point(i,y-i+x);
+					int l=i;
+					if(y-l+x<8 && y-l+x>=0){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 						i=8;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(0)=='B'){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
 						i=8;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y-i+x);
+					if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y+i-x<8 && y+i-x>=0){
-					if(aiarr[i][y+i-x].toString().charAt(0)=='W'){
-						moves[numBishop]=new Point(i,y+i-x);
+					int l=i;
+					if(y+l-x<8 && y+l-x>=0){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 						i=-1;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(0)=='B'){
+					if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
 						i=-1;
 					}
-					if(aiarr[i][y+i-x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y+i-x);
+					if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y+l-x);
 						numBishop++;
 					}
 					}
 				}
 				for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
-					if(y-i+x<8 && y-i+x>=0){
-					if(aiarr[i][y-i+x].toString().charAt(0)=='W'){
-						moves[numBishop]=new Point(i,y-i+x);
+					int l=i;
+					if(y-l+x<8 && y-l+x>=0){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 						i=-1;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(0)=='B'){
+					if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
 						i=-1;
 					}
-					if(aiarr[i][y-i+x].toString().charAt(1)=='X'){
-						moves[numBishop]=new Point(i,y-i+x);
+					if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
+						moves[numBishop]=new Point(l,y-l+x);
 						numBishop++;
 					}
 					}
@@ -1920,7 +1928,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		arr1[1][2]=new Knight(true);
 		arr1[2][3]=new Pawn(true);
 		arr1[3][4]=new Rook(true);
-		arr1[3][2]=new Bishop(false);
+		arr1[3][2]=new Bishop(true);
 		//b.printBoard();
 		test.readBoard(b);
 		
