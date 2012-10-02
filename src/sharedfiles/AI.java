@@ -250,16 +250,16 @@ if(threatened[i].toString().charAt(1)=='N')
 		case 0://pawn
 			if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 				Point[] moves=new Point[4];
-				if(x+1<8 && y+1<8 && aiarr[x+1][y+1].toString().charAt(0)=='B'){
-				moves[0]=new Point(x+1,y+1);
+				if((x+1<8 && y-1>=0) &&aiarr[x+1][y-1].toString().charAt(0)=='B'){
+				moves[0]=new Point(x+1,y-1);
 				}
-				if(x-1>=0 && y+1<8 && aiarr[x-1][y+1].toString().charAt(0)=='B'){
-				moves[1]=new Point(x-1,y+1);
+				if(x-1>=0 && y-1>=0 && aiarr[x-1][y-1].toString().charAt(0)=='B'){
+				moves[1]=new Point(x-1,y-1);
 				}
 				if(y==6 && aiarr[x][y-2].toString().charAt(1)=='X'){
 				moves[2]=new Point(x,y-2);
 				}
-				if(aiarr[x][y-1].toString().charAt(1)=='X'){
+				if(y-1>=0 && aiarr[x][y-1].toString().charAt(1)=='X'){
 					moves[3]=new Point(x,y-1);
 				}
 				
@@ -267,51 +267,78 @@ if(threatened[i].toString().charAt(1)=='N')
 			}
 			if(aiarr[x][y].toString().charAt(0)=='B'){
 				Point[] moves=new Point[4];
-				if(x+1<8 && y-1>=0 ){
-				moves[0]=new Point(x+1,y-1);
+				if((x+1<8 && y+1<8) &&aiarr[x+1][y+1].toString().charAt(0)=='W'){
+				moves[0]=new Point(x+1,y+1);
 				}
-				if(x-1>=0 && y-1>=0 ){
-				moves[1]=new Point(x-1,y-1);
+				if(x-1>=0 && y+1<8 && aiarr[x-1][y+1].toString().charAt(0)=='W'){
+				moves[1]=new Point(x-1,y+11);
 				}
 				if(y==1 && aiarr[x][y+2].toString().charAt(1)=='X'){
-					moves[2]=new Point(x,y+2);
+				moves[2]=new Point(x,y+2);
 				}
-				if(aiarr[x][y+1].toString().charAt(1)=='X'){
-						moves[3]=new Point(x,y+1);
-				}
+				if(y+1<8 && aiarr[x][y+1].toString().charAt(1)=='X'){
+					moves[3]=new Point(x,y+1);
+				}				
 				return moves;
 			}
 			break;
 		case 1:
-		//knight is independent of color
-			if(true){
+			if(aiarr[x][y].toString().charAt(0)=='W'){
 				Point[] moves=new Point[8];
-				if(x+1<8 &&y+2<8){
+				if(x+1<8 &&y+2<8 &&( aiarr[x+1][y+2].toString().charAt(0)=='B' || aiarr[x+1][y+2].toString().charAt(1)=='X')){
 				moves[0]=new Point(x+1,y+2);
 				}
-				if(x-1>=0 &&y+2<8){
+				if(x-1>=0 &&y+2<8 &&( aiarr[x-1][y+2].toString().charAt(0)=='B' || aiarr[x-1][y+2].toString().charAt(1)=='X')){
 				moves[1]=new Point(x-1,y+2);
 				}
-				if(x+1<8 &&y-2>=0){
+				if(x+1<8 &&y-2>=0 &&( aiarr[x+1][y-2].toString().charAt(0)=='B' || aiarr[x+1][y-2].toString().charAt(1)=='X')){
 				moves[2]=new Point(x+1,y-2);
 				}
-				if(x-1>=0 &&y-2>=0){
-				moves[3]=new Point(x-1,y-2);
+				if(x-1>=0 &&y-2>=0 &&( aiarr[x-1][y-2].toString().charAt(0)=='B' || aiarr[x-1][y-2].toString().charAt(1)=='X')){
+					moves[3]=new Point(x-1,y-2);
 				}
-				if(x+2<8 &&y+1<8){
-					moves[3]=new Point(x+2,y+1);
+				if(x+2<8 &&y+1<8 &&( aiarr[x+2][y+1].toString().charAt(0)=='B' || aiarr[x+2][y+1].toString().charAt(1)=='X')){
+					moves[4]=new Point(x+2,y+1);
 				}
-				if(x+2<8 &&y-1>=0){
-					moves[3]=new Point(x+2,y-1);
+				if(x+2<8 &&y-1>=0 &&( aiarr[x+2][y-1].toString().charAt(0)=='B' || aiarr[x+2][y-1].toString().charAt(1)=='X')){
+					moves[5]=new Point(x+2,y-1);
 				}
-				if(x-2>=0 &&y+1<8){
-					moves[3]=new Point(x-2,y+1);
+				if(x-2>=0 &&y+1<8 &&( aiarr[x-2][y+1].toString().charAt(0)=='B' || aiarr[x-2][y+1].toString().charAt(1)=='X')){
+					moves[6]=new Point(x-2,y+1);
 				}
-				if(x-2>=0 &&y-1>=0){
-					moves[3]=new Point(x-2,y-1);
+				if(x-2>=0 &&y-1>=0 &&( aiarr[x-2][y-1].toString().charAt(0)=='B' || aiarr[x-2][y-1].toString().charAt(1)=='X')){
+					moves[7]=new Point(x-2,y-1);
 				}
 				return moves;
 		}
+			if(aiarr[x][y].toString().charAt(0)=='B'){
+				Point[] moves=new Point[8];
+				if(x+1<8 &&y+2<8 &&( aiarr[x+1][y+2].toString().charAt(0)=='W' || aiarr[x+1][y+2].toString().charAt(1)=='X')){
+				moves[0]=new Point(x+1,y+2);
+				}
+				if(x-1>=0 &&y+2<8 &&( aiarr[x-1][y+2].toString().charAt(0)=='W' || aiarr[x-1][y+2].toString().charAt(1)=='X')){
+				moves[1]=new Point(x-1,y+2);
+				}
+				if(x+1<8 &&y-2>=0 &&( aiarr[x+1][y-2].toString().charAt(0)=='W' || aiarr[x+1][y-2].toString().charAt(1)=='X')){
+				moves[2]=new Point(x+1,y-2);
+				}
+				if(x-1>=0 &&y-2>=0 &&( aiarr[x-1][y-2].toString().charAt(0)=='W' || aiarr[x-1][y-2].toString().charAt(1)=='X')){
+				moves[3]=new Point(x-1,y-2);
+				}
+				if(x+2<8 &&y+1<8 &&( aiarr[x+2][y+1].toString().charAt(0)=='W' || aiarr[x+2][y+1].toString().charAt(1)=='X')){
+					moves[4]=new Point(x+2,y+1);
+				}
+				if(x+2<8 &&y-1>=0 &&( aiarr[x+2][y-1].toString().charAt(0)=='W' || aiarr[x+2][y-1].toString().charAt(1)=='X')){
+					moves[5]=new Point(x+2,y-1);
+				}
+				if(x-2>=0 &&y+1<8 &&( aiarr[x-2][y+1].toString().charAt(0)=='W' || aiarr[x-2][y+1].toString().charAt(1)=='X')){
+					moves[6]=new Point(x-2,y+1);
+				}
+				if(x-2>=0 &&y-1>=0 &&( aiarr[x-2][y-1].toString().charAt(0)=='W' || aiarr[x-2][y-1].toString().charAt(1)=='X')){
+					moves[7]=new Point(x-2,y-1);
+				}
+				return moves;
+			}
 			break;
 		case 2:
 			if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
@@ -1890,7 +1917,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		Board b=new Board();
 		Piece [][] arr1=new Piece[8][8];
 		arr1=b.getBoardArray();
-		arr1[1][2]=new Rook(true);
+		arr1[1][2]=new Knight(true);
 		arr1[2][3]=new Pawn(true);
 		arr1[3][4]=new Rook(true);
 		arr1[3][2]=new Bishop(false);
@@ -1909,8 +1936,8 @@ if(threatened[i].toString().charAt(1)=='N')
 		//test.printThreats();
 		//boolean B=test.isThreatened(new Point(3,1));
 		//System.out.println(B);
-		Point[] a=test.canMove(new Point(1,2));
-		for(int i=0;i<10;i++){
+		Point[] a=test.canMove(new Point(3,2));
+		for(int i=0;i<a.length;i++){
 			System.out.println(a[i]);
 		}
 		
