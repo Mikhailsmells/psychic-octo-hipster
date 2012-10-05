@@ -493,65 +493,68 @@ if(threatened[i].toString().charAt(1)=='N')
 		case 3:
 				if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 					int numRook=0;
-					Point[] moves=new Point[100];
+					Point[] moves=new Point[20];
 					for(int i=x+1;i<8;i++){
-						System.out.println(i);
+						//System.out.println(i);
 						int l=i;
+						//System.out.print(l+" ");
+						//System.out.println(y);
+						//System.out.println(aiarr[l][y].toString());
 						 if(aiarr[l][y].toString().charAt(0)=='B'){
-							
-							 moves[numRook]=new Point(i,y);
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 							 i=8;
 						 }
-						 else if(aiarr[l][y].toString().charAt(0)=='W'){
+						 else if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							 i=8;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 						 }
 					}//for
 					for(int i=x-1;i>=0;i--){
 						int l=i;
 						 if(aiarr[l][y].toString().charAt(0)=='B'){
-							 moves[numRook]=new Point(i,y);
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 							 i=-1;
 						 }
-						 else if(aiarr[l][y].toString().charAt(0)=='W'){
+						 else if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							 i=-1;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 						 }
-					}//for
+					}//for 		   
 					for(int i=y+1;i<8;i++){
 						int l=i;
 						 if(aiarr[x][l].toString().charAt(0)=='B'){
-							 moves[numRook]=new Point(x,i);
+							 moves[numRook]=new Point(x,l);
 							 numRook++;
 							 i=8;
 						 }
-						 else if(aiarr[x][l].toString().charAt(0)=='W'){
+						 else if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 i=8;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(x,i);
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(x,l);
 							 numRook++;
 						 }
-					}//for
+					}//for   
 					for(int i=y-1;i>=0;i--){
 						int l=i;
+						//System.out.println(x+" "+l);
 						 if(aiarr[x][l].toString().charAt(0)=='B'){
 							 moves[numRook]=new Point(x,l);
 							 numRook++;
 							 i=-1;
 						 }
-						 else if(aiarr[x][l].toString().charAt(0)=='W'){
+						 else if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 i=-1;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
 							 moves[numRook]=new Point(x,l);
 							 numRook++;
 						 }
@@ -563,55 +566,54 @@ if(threatened[i].toString().charAt(1)=='N')
 					int numRook=0;
 					Point[] moves=new Point[100];
 					for(int i=x+1;i<8;i++){
-						System.out.println(i);
 						int l=i;
-						 if(aiarr[l][y].toString().charAt(0)=='W'){
+						 if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							
-							 moves[numRook]=new Point(i,y);
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 							 i=8;
 						 }
 						 else if(aiarr[l][y].toString().charAt(0)=='B'){
 							 i=8;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 						 }
 					}//for
 					for(int i=x-1;i>=0;i--){
 						int l=i;
-						 if(aiarr[l][y].toString().charAt(0)=='W'){
-							 moves[numRook]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 							 i=-1;
 						 }
 						 else if(aiarr[l][y].toString().charAt(0)=='B'){
 							 i=-1;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(l,y);
 							 numRook++;
 						 }
 					}//for
 					for(int i=y+1;i<8;i++){
 						int l=i;
-						 if(aiarr[x][l].toString().charAt(0)=='W'){
-							 moves[numRook]=new Point(x,i);
+						 if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
+							 moves[numRook]=new Point(x,l);
 							 numRook++;
 							 i=8;
 						 }
 						 else if(aiarr[x][l].toString().charAt(0)=='B'){
 							 i=8;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
-							 moves[numRook]=new Point(x,i);
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
+							 moves[numRook]=new Point(x,l);
 							 numRook++;
 						 }
 					}//for
 					for(int i=y-1;i>=0;i--){
 						int l=i;
-						 if(aiarr[x][l].toString().charAt(0)=='W'){
+						if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 moves[numRook]=new Point(x,l);
 							 numRook++;
 							 i=-1;
@@ -619,7 +621,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						 else if(aiarr[x][l].toString().charAt(0)=='B'){
 							 i=-1;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
 							 moves[numRook]=new Point(x,l);
 							 numRook++;
 						 }
@@ -1957,8 +1959,8 @@ if(threatened[i].toString().charAt(1)=='N')
 		arr1=b.getBoardArray();
 		arr1[1][2]=new Knight(true);
 		arr1[2][3]=new Pawn(true);
-		arr1[3][4]=new Rook(true);
-		arr1[3][2]=new Bishop(true);
+		arr1[3][4]=new Rook(false);
+		arr1[3][2]=new King(false);
 		//b.printBoard();
 		test.readBoard(b);
 		
@@ -1974,8 +1976,8 @@ if(threatened[i].toString().charAt(1)=='N')
 		//test.printThreats();
 		//boolean B=test.isThreatened(new Point(3,1));
 		//System.out.println(B);
-		Point[] a=test.canMove(new Point(3,2));
-		for(int i=0;i<10;i++){
+		Point[] a=test.canMove(new Point(3,4));
+		for(int i=0;i<a.length;i++){
 			System.out.println(a[i]);
 		}
 		
