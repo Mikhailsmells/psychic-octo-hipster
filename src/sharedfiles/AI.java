@@ -635,49 +635,49 @@ if(threatened[i].toString().charAt(1)=='N')
 					int numQueen=0;
 					Point[] moves=new Point[100];
 					for(int i=x+1;i<8;i++){
-						System.out.println(i);
+				
 						int l=i;
 						 if(aiarr[l][y].toString().charAt(0)=='B'){
 							
-							 moves[numQueen]=new Point(i,y);
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 							 i=8;
 						 }
-						 else if(aiarr[l][y].toString().charAt(0)=='W'){
+						 else if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							 i=8;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 						 }
 					}//for
 					for(int i=x-1;i>=0;i--){
 						int l=i;
 						 if(aiarr[l][y].toString().charAt(0)=='B'){
-							 moves[numQueen]=new Point(i,y);
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 							 i=-1;
 						 }
-						 else if(aiarr[l][y].toString().charAt(0)=='W'){
+						 else if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							 i=-1;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 						 }
 					}//for
 					for(int i=y+1;i<8;i++){
 						int l=i;
 						 if(aiarr[x][l].toString().charAt(0)=='B'){
-							 moves[numQueen]=new Point(x,i);
+							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 							 i=8;
 						 }
-						 else if(aiarr[x][l].toString().charAt(0)=='W'){
+						 else if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 i=8;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(x,i);
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 						 }
 					}//for
@@ -688,10 +688,10 @@ if(threatened[i].toString().charAt(1)=='N')
 							 numQueen++;
 							 i=-1;
 						 }
-						 else if(aiarr[x][l].toString().charAt(0)=='W'){
+						 else if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 i=-1;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
 							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 						 }
@@ -704,7 +704,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							numQueen++;
 							i=8;
 						}
-						else if(aiarr[l][y+l-x].toString().charAt(0)=='W'){
+						else if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 							i=8;
 						}
 						if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
@@ -713,7 +713,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						}
 						}
 					}
-					for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
+				for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
 						int l=i;
 						if(y-l+x<8 && y-l+x>=0){
 						if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
@@ -721,7 +721,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							numQueen++;
 							i=8;
 						}
-						else if(aiarr[l][y-l+x].toString().charAt(0)=='W'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y-l+x].toString().charAt(1)!='X'){
 							i=8;
 						}
 						if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
@@ -738,7 +738,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							numQueen++;
 							i=-1;
 						}
-						else if(aiarr[l][y+l-x].toString().charAt(0)=='W'){
+						if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 							i=-1;
 						}
 						if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
@@ -755,7 +755,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							numQueen++;
 							i=-1;
 						}
-						else if(aiarr[l][y-l+x].toString().charAt(0)=='W'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y-l+x].toString().charAt(1)!='X'){
 							i=-1;
 						}
 						if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
@@ -763,7 +763,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							numQueen++;
 						}
 						}
-				}
+					}
 					return moves;
 				}//color
 
@@ -771,55 +771,55 @@ if(threatened[i].toString().charAt(1)=='N')
 					int numQueen=0;
 					Point[] moves=new Point[100];
 					for(int i=x+1;i<8;i++){
-						System.out.println(i);
+					
 						int l=i;
-						 if(aiarr[l][y].toString().charAt(0)=='W'){
+						if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
 							
-							 moves[numQueen]=new Point(i,y);
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 							 i=8;
 						 }
 						 else if(aiarr[l][y].toString().charAt(0)=='B'){
 							 i=8;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 						 }
 					}//for
 					for(int i=x-1;i>=0;i--){
 						int l=i;
-						 if(aiarr[l][y].toString().charAt(0)=='W'){
-							 moves[numQueen]=new Point(i,y);
+						if(aiarr[l][y].toString().charAt(0)=='W' && aiarr[l][y].toString().charAt(1)!='X'){
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 							 i=-1;
 						 }
 						 else if(aiarr[l][y].toString().charAt(0)=='B'){
 							 i=-1;
 						 }
-						 if(aiarr[l][y].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(i,y);
+						 if(aiarr[l][y].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(l,y);
 							 numQueen++;
 						 }
 					}//for
 					for(int i=y+1;i<8;i++){
 						int l=i;
-						 if(aiarr[x][l].toString().charAt(0)=='W'){
-							 moves[numQueen]=new Point(x,i);
+						if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
+							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 							 i=8;
 						 }
 						 else if(aiarr[x][l].toString().charAt(0)=='B'){
 							 i=8;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
-							 moves[numQueen]=new Point(x,i);
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
+							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 						 }
 					}//for
 					for(int i=y-1;i>=0;i--){
 						int l=i;
-						 if(aiarr[x][l].toString().charAt(0)=='W'){
+						if(aiarr[x][l].toString().charAt(0)=='W' && aiarr[x][l].toString().charAt(1)!='X'){
 							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 							 i=-1;
@@ -827,7 +827,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						 else if(aiarr[x][l].toString().charAt(0)=='B'){
 							 i=-1;
 						 }
-						 if(aiarr[x][l].toString().charAt(0)=='X'){
+						 if(aiarr[x][l].toString().charAt(1)=='X'){
 							 moves[numQueen]=new Point(x,l);
 							 numQueen++;
 						 }
@@ -835,12 +835,12 @@ if(threatened[i].toString().charAt(1)=='N')
 					for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
 						int l=i;
 						if(y+l-x<8 && y+l-x>=0){
-						if(aiarr[l][y+l-x].toString().charAt(0)=='W'){
+						if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 							moves[numQueen]=new Point(l,y+l-x);
 							numQueen++;
 							i=8;
 						}
-						else if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
+						if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
 							i=8;
 						}
 						if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
@@ -852,12 +852,12 @@ if(threatened[i].toString().charAt(1)=='N')
 					for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
 						int l=i;
 						if(y-l+x<8 && y-l+x>=0){
-						if(aiarr[l][y-l+x].toString().charAt(0)=='W'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y-l+x].toString().charAt(1)!='X'){
 							moves[numQueen]=new Point(l,y-l+x);
 							numQueen++;
 							i=8;
 						}
-						else if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
 							i=8;
 						}
 						if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
@@ -869,12 +869,12 @@ if(threatened[i].toString().charAt(1)=='N')
 					for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
 						int l=i;
 						if(y+l-x<8 && y+l-x>=0){
-						if(aiarr[l][y+l-x].toString().charAt(0)=='W'){
+						if(aiarr[l][y+l-x].toString().charAt(0)=='W' && aiarr[l][y+l-x].toString().charAt(1)!='X'){
 							moves[numQueen]=new Point(l,y+l-x);
 							numQueen++;
 							i=-1;
 						}
-						else if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
+						if(aiarr[l][y+l-x].toString().charAt(0)=='B'){
 							i=-1;
 						}
 						if(aiarr[l][y+l-x].toString().charAt(1)=='X'){
@@ -886,20 +886,22 @@ if(threatened[i].toString().charAt(1)=='N')
 					for(int i=x-1;i>=0;i--){//Diagonal //ToDo-check if x+1 is out of bounds
 						int l=i;
 						if(y-l+x<8 && y-l+x>=0){
-						if(aiarr[l][y-l+x].toString().charAt(0)=='W'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='W' && aiarr[l][y-l+x].toString().charAt(1)!='X'){
+						
 							moves[numQueen]=new Point(l,y-l+x);
 							numQueen++;
 							i=-1;
 						}
-						else if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
+						if(aiarr[l][y-l+x].toString().charAt(0)=='B'){
 							i=-1;
 						}
 						if(aiarr[l][y-l+x].toString().charAt(1)=='X'){
+					
 							moves[numQueen]=new Point(l,y-l+x);
 							numQueen++;
 						}
 						}
-				}
+					}
 					return moves;
 				}//color
 				break;
@@ -1959,7 +1961,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		arr1=b.getBoardArray();
 		arr1[1][2]=new Knight(true);
 		arr1[2][3]=new Pawn(true);
-		arr1[3][4]=new Rook(false);
+		arr1[3][4]=new Queen(false);
 		arr1[3][2]=new King(false);
 		//b.printBoard();
 		test.readBoard(b);
