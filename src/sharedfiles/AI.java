@@ -27,11 +27,11 @@ public class AI {
 		if(color=='W')
 		{
 			switch(numTurns){
-			case 0: this.makeMove(new Point(5,6),new Point(5,4) );testBoard.setBoardArray(aiarr);return testBoard;
-			case 1: this.makeMove(new Point(6,6), new Point(6,5));testBoard.setBoardArray(aiarr);return testBoard;
-			case 2: this.makeMove(new Point(6,7), new Point(5,5));testBoard.setBoardArray(aiarr);return testBoard;
-			case 3: this.makeMove(new Point(5,7), new Point(6,6));testBoard.setBoardArray(aiarr);return testBoard;
-			case 4: aiarr[6][7]=aiarr[4][7]; aiarr[4][7]=new Blank(true); aiarr[5][7]=aiarr[7][7]; aiarr[7][7]=new Blank(true);testBoard.setBoardArray(aiarr);return testBoard;
+			case 0: this.makeMove(new Point(5,6),new Point(5,4) );numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 1: this.makeMove(new Point(6,6), new Point(6,5));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 2: this.makeMove(new Point(6,7), new Point(5,5));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 3: this.makeMove(new Point(5,7), new Point(6,6));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 4: aiarr[6][7]=aiarr[4][7]; aiarr[4][7]=new Blank(true); aiarr[5][7]=aiarr[7][7]; aiarr[7][7]=new Blank(true);testBoard.setBoardArray(aiarr);numTurns++;return testBoard;
 			default:
 				for(int i=0;i<10;i++){
 					readBoard(testBoard);
@@ -47,11 +47,11 @@ public class AI {
 		}//w
 		if(color=='B'){
 			switch(numTurns){
-			case 0: this.makeMove(new Point(5,1),new Point(5,3) );testBoard.setBoardArray(aiarr);return testBoard;
-			case 1: this.makeMove(new Point(6,1), new Point(6,2));testBoard.setBoardArray(aiarr);return testBoard;
-			case 2: this.makeMove(new Point(6,0), new Point(5,2));testBoard.setBoardArray(aiarr);return testBoard;
-			case 3: this.makeMove(new Point(5,0), new Point(6,1));testBoard.setBoardArray(aiarr);return testBoard;
-			case 4: aiarr[6][0]=aiarr[4][0]; aiarr[4][0]=new Blank(true); aiarr[5][0]=aiarr[7][0]; aiarr[7][0]=new Blank(true);testBoard.setBoardArray(aiarr);return testBoard;
+			case 0: this.makeMove(new Point(5,1),new Point(5,3) );numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 1: this.makeMove(new Point(6,1), new Point(6,2));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 2: this.makeMove(new Point(6,0), new Point(5,2));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 3: this.makeMove(new Point(5,0), new Point(6,1));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
+			case 4: aiarr[6][0]=aiarr[4][0]; aiarr[4][0]=new Blank(true); aiarr[5][0]=aiarr[7][0]; aiarr[7][0]=new Blank(true);testBoard.setBoardArray(aiarr);numTurns++;return testBoard;
 			default:
 				for(int i=0;i<10;i++){
 					readBoard(testBoard);
