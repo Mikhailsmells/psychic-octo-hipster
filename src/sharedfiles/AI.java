@@ -23,15 +23,12 @@ public class AI {
 	}
 	public Board takeTurn(Board b){
 		
-		Board testBoard=new Board();
 			
-				this.readBoard(testBoard);
-				this.checkThreats(testBoard, color);
+				this.readBoard(b);
+				this.checkThreats(b, color);
 				this.checkMoves();
-				testBoard.setBoardArray(this.aiarr);
-				testBoard.printBoard();
-				System.out.println();
-				return testBoard;
+				b.setBoardArray(this.aiarr);
+				return b;
 			
 			
 		}
