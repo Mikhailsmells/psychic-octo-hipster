@@ -23,8 +23,18 @@ public class AI {
 	}
 	public Board takeTurn(Board b){
 		
-		Board testBoard=b;
-		if(color=='W')
+		Board testBoard=new Board();
+			for(int i=0;i<10;i++){
+				this.readBoard(testBoard);
+				this.checkThreats(testBoard, color);
+				this.checkMoves();
+				testBoard.setBoardArray(this.aiarr);
+				testBoard.printBoard();
+				System.out.println();
+
+			}
+		}
+		/*if(color=='W')
 		{
 			switch(numTurns){
 			case 0: this.makeMove(new Point(5,6),new Point(5,4) );numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
@@ -53,7 +63,7 @@ public class AI {
 			case 3: this.makeMove(new Point(5,0), new Point(6,1));numTurns++;testBoard.setBoardArray(aiarr);return testBoard;
 			case 4: aiarr[6][0]=aiarr[4][0]; aiarr[4][0]=new Blank(true); aiarr[5][0]=aiarr[7][0]; aiarr[7][0]=new Blank(true);testBoard.setBoardArray(aiarr);numTurns++;return testBoard;
 			default:
-				for(int i=0;i<10;i++){
+				for(int i=0;i<15;i++){
 					readBoard(testBoard);
 					checkThreats(testBoard, color);
 					checkMoves();
@@ -64,7 +74,7 @@ public class AI {
 				return testBoard;
 			}
 		}
-			return null;
+			return null;*/
 	}
 	public void readBoard(Board b)
 		{
