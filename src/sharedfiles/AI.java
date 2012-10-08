@@ -271,7 +271,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				if(x-1>=0 && y-1>=0 && aiarr[x-1][y-1].toString().charAt(0)=='B'){
 				moves[1]=new Point(x-1,y-1);
 				}
-				if(y==6 && aiarr[x][y-2].toString().charAt(1)=='X'){
+				if(y==6 && aiarr[x][y-2].toString().charAt(1)=='X' && aiarr[x][y-1].toString().charAt(1)=='X'){
 				moves[2]=new Point(x,y-2);
 				}
 				if(y-1>=0 && aiarr[x][y-1].toString().charAt(1)=='X'){
@@ -288,7 +288,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				if(x-1>=0 && y+1<8 && aiarr[x-1][y+1].toString().charAt(0)=='W' &&aiarr[x-1][y+1].toString().charAt(1)!='X'){
 				moves[1]=new Point(x-1,y+1);
 				}
-				if(y==1 && aiarr[x][y+2].toString().charAt(1)=='X'){
+				if(y==1 && aiarr[x][y+2].toString().charAt(1)=='X' && aiarr[x][y+1].toString().charAt(1)=='X'){
 				moves[2]=new Point(x,y+2);
 				}
 				if(y+1<8 && aiarr[x][y+1].toString().charAt(1)=='X'){
@@ -2011,11 +2011,13 @@ if(threatened[i].toString().charAt(1)=='N')
 			test1.readBoard(testBoard);
 			test1.checkThreats(testBoard, 'W');
 			test1.checkMoves();
+			testBoard.setBoardArray(test1.aiarr);
 			testBoard.printBoard();
 			System.out.println();
 			test2.readBoard(testBoard);
 			test2.checkThreats(testBoard,'B');
 			test2.checkMoves();
+			testBoard.setBoardArray(test2.aiarr);
 			testBoard.printBoard();
 			System.out.println();
 		}
