@@ -24,15 +24,16 @@ public class AI {
 	public Board takeTurn(Board b){
 		
 		Board testBoard=new Board();
-			for(int i=0;i<10;i++){
+			
 				this.readBoard(testBoard);
 				this.checkThreats(testBoard, color);
 				this.checkMoves();
 				testBoard.setBoardArray(this.aiarr);
 				testBoard.printBoard();
 				System.out.println();
-
-			}
+				return testBoard;
+			
+			
 		}
 		/*if(color=='W')
 		{
@@ -75,7 +76,7 @@ public class AI {
 			}
 		}
 			return null;*/
-	}
+	
 	public void readBoard(Board b)
 		{
 			gameBoard=b;
