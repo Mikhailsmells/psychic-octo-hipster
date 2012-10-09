@@ -21,6 +21,22 @@ public class AI {
 		color=c;//black is false
 		return c;
 	}
+	public void checkPawn(){
+		if(color=='W'){
+			for(int i=0;i<8;i++){
+				if(aiarr[i][0].toString().charAt(1)=='P'){
+					aiarr[i][0]=new Queen(true);
+				}
+			}
+		}
+		if(color=='B'){
+			for(int i=0;i<8;i++){
+				if(aiarr[i][7].toString().charAt(1)=='P'){
+					aiarr[i][7]=new Queen(false);
+				}
+			}
+		}
+	}
 	public Board takeTurn(Board b){
 		
 			
@@ -43,6 +59,7 @@ public class AI {
 			default:
 					readBoard(b);
 					checkThreats(b, color);
+					checkPawn();
 					checkMoves();
 					b.setBoardArray(this.aiarr);
 		
@@ -62,6 +79,7 @@ public class AI {
 				
 					readBoard(b);
 					checkThreats(b, color);
+					checkPawn();
 					checkMoves();
 					b.setBoardArray(this.aiarr);
 					
