@@ -40,15 +40,15 @@ public class AI {
 	public Board takeTurn(Board b){
 		
 			
-				/*this.readBoard(b);
+				this.readBoard(b);
 				this.checkThreats(b, color);
 				this.checkMoves();
 				b.setBoardArray(this.aiarr);
-				return b;*/
+				return b;
 	//		}
 	
 	
-		if(color=='W')
+		/*if(color=='W')
 		{
 			switch(numTurns){
 			case 0: this.makeMove(new Point(5,6),new Point(5,4) );numTurns++;b.setBoardArray(aiarr);return b;
@@ -66,7 +66,7 @@ public class AI {
 					
 				return b;
 			
-		}
+		/*}
 		}//w
 		if(color=='B'){
 			switch(numTurns){
@@ -86,7 +86,7 @@ public class AI {
 				return b;
 			}
 		}
-			return null;
+			return null;*/
 	}
 	
 	public void readBoard(Board b)
