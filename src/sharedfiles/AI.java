@@ -178,7 +178,7 @@ public class AI {
 						for(int i=0;i<moves.length;i++){
 							//System.out.println(x+" "+y);
 							//System.out.println(i);
-							//System.out.println(moves[i]);
+							//System.out.println(fmoves[i]);
 							int score=0;
 							if(moves[i]!=null){
 								if(isThreatened(new Point(x,y))){
@@ -990,7 +990,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				}//color
 				break;
 			case 5: 
-				if(aiarr[x][y].toString().charAt(0)=='W'){
+				/*if(aiarr[x][y].toString().charAt(0)=='W'){
 					Point[] moves=new Point[8];
 					if(x+1<8 &&y+1<8 &&( aiarr[x+1][y+1].toString().charAt(0)=='B' || aiarr[x+1][y+1].toString().charAt(1)=='X')){
 					moves[0]=new Point(x+1,y+1);
@@ -1045,7 +1045,289 @@ if(threatened[i].toString().charAt(1)=='N')
 						moves[7]=new Point(x-1,y-1);
 					}
 					return moves;
-				}
+				}*/
+				
+				
+				if(aiarr[x][y].toString().charAt(0)=='W'){
+					Point[] moves=new Point[8];
+					if(x+1<8 &&y+1<8 &&( aiarr[x+1][y+1].toString().charAt(0)=='B' || aiarr[x+1][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y+1));
+						if(!(isThreatened(new Point(x+1,y+1)))){
+							moves[0]=new Point(x+1,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x<8 &&y+1<8 &&( aiarr[x][y+1].toString().charAt(0)=='B' || aiarr[x][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x,y+1));
+						if(!(isThreatened(new Point(x,y+1)))){
+							moves[0]=new Point(x,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y+1<8 &&( aiarr[x-1][y+1].toString().charAt(0)=='B' || aiarr[x-1][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y+1));
+						if(!(isThreatened(new Point(x-1,y+1)))){
+							moves[0]=new Point(x-1,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x+1<8 &&y<8 &&( aiarr[x+1][y].toString().charAt(0)=='B' || aiarr[x+1][y].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y));
+						if(!(isThreatened(new Point(x+1,y)))){
+							moves[0]=new Point(x+1,y);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y<8 &&( aiarr[x-1][y].toString().charAt(0)=='B' || aiarr[x-1][y].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y));
+						if(!(isThreatened(new Point(x-1,y)))){
+							moves[0]=new Point(x-1,y);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x+1<8 &&y-1>=0 &&( aiarr[x+1][y-1].toString().charAt(0)=='B' || aiarr[x+1][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y-1));
+						if(!(isThreatened(new Point(x+1,y-1)))){
+							moves[0]=new Point(x+1,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x<8 &&y-1>=0 &&( aiarr[x+1][y+1].toString().charAt(0)=='B' || aiarr[x][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x,y-1));
+						if(!(isThreatened(new Point(x,y-1)))){
+							moves[0]=new Point(x,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y-1>=0 &&( aiarr[x-1][y-1].toString().charAt(0)=='B' || aiarr[x-1][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y-1));
+						if(!(isThreatened(new Point(x-1,y-1)))){
+							moves[0]=new Point(x-1,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					return moves;
+			}
+				if(aiarr[x][y].toString().charAt(0)=='B'){
+					Point[] moves=new Point[8];
+					if(x+1<8 &&y+1<8 &&( aiarr[x+1][y+1].toString().charAt(0)=='W' || aiarr[x+1][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y+1));
+						if(!(isThreatened(new Point(x+1,y+1)))){
+							moves[0]=new Point(x+1,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x<8 &&y+1<8 &&( aiarr[x][y+1].toString().charAt(0)=='W' || aiarr[x][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x,y+1));
+						if(!(isThreatened(new Point(x,y+1)))){
+							moves[0]=new Point(x,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y+1<8 &&( aiarr[x-1][y+1].toString().charAt(0)=='W' || aiarr[x-1][y+1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y+1));
+						if(!(isThreatened(new Point(x-1,y+1)))){
+							moves[0]=new Point(x-1,y+1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x+1<8 &&y<8 &&( aiarr[x+1][y].toString().charAt(0)=='W' || aiarr[x+1][y].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y));
+						if(!(isThreatened(new Point(x+1,y)))){
+							moves[0]=new Point(x+1,y);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y<8 &&( aiarr[x-1][y].toString().charAt(0)=='W' || aiarr[x-1][y].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y));
+						if(!(isThreatened(new Point(x-1,y)))){
+							moves[0]=new Point(x-1,y);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x+1<8 &&y-1>=0 &&( aiarr[x+1][y-1].toString().charAt(0)=='W' || aiarr[x+1][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x+1,y-1));
+						if(!(isThreatened(new Point(x+1,y-1)))){
+							moves[0]=new Point(x+1,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x<8 &&y-1>=0 &&( aiarr[x+1][y+1].toString().charAt(0)=='W' || aiarr[x][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x,y-1));
+						if(!(isThreatened(new Point(x,y-1)))){
+							moves[0]=new Point(x,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					if(x-1>=0 &&y-1>=0 &&( aiarr[x-1][y-1].toString().charAt(0)=='W' || aiarr[x-1][y-1].toString().charAt(1)=='X')){
+						Piece [][] arr0=new Piece[8][8];
+						for(int x1=0;x1<8;x1++){
+							for(int y1=0;y1<8;y1++){
+								arr0[x1][y1]=aiarr[x1][y1];
+							}
+						}
+						Piece [][] a1=aiarr;
+						aiarr=arr0;
+						makeMove(new Point(x,y),new Point(x-1,y-1));
+						if(!(isThreatened(new Point(x-1,y-1)))){
+							moves[0]=new Point(x-1,y-1);
+						}
+						
+						aiarr=a1;//FIX
+					
+					}
+					return moves;
+			}
 				break;
 				case 6:
 				break;
