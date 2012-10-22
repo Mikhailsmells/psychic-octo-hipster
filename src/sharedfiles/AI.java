@@ -1,6 +1,7 @@
 
 package sharedfiles;
 import java.awt.*;
+import java.util.*;
 public class AI {
 	public Piece [][] aiarr=new Piece[8][8];
 	public Board gameBoard;
@@ -170,10 +171,14 @@ public class AI {
 		int best=-1;
 		Point p1=new Point(0,0);//piece to move
 		Point p2=new Point(0,0);//location to move to
+		ArrayList<Integer> scores=new ArrayList<Integer>();
+		ArrayList<Point> moveScore=new ArrayList<Point>();
+		ArrayList<Point> pointmoving=new ArrayList<Point>();
 			for(int x=0;x<8;x++){
 				for(int y=0;y<8;y++){
 				
 					if(aiarr[x][y].toString().charAt(0)==c && aiarr[x][y].toString().charAt(1)!='X'){
+						
 						Point [] moves=canMove(new Point(x,y));
 						for(int i=0;i<moves.length;i++){
 							//System.out.println(x+" "+y);
@@ -200,18 +205,39 @@ public class AI {
 									score-=toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]);
 								}
 								aiarr=a1;//FIX
-								if(score>best){
+								if(score>=best){
 									best=score;
-									p1=new Point(x,y);
-									p2=new Point(moves[i]);
+									moveScore.add(moves[i]);
+									scores.add(score);
+									pointmoving.add(new Point(x,y));
+									
+									//p2=new Point(moves[i]);
 								}
 								
-							}
-						}
+								
+								
+							}//if
+						}//moves
 					}
-				}//for
-			
+					
+				}//for piece
+				
 			}
+			//System.out.println(best);
+			ArrayList<Point> u=new ArrayList<Point>();
+			ArrayList<Point> q=new ArrayList<Point>();
+			for(int a=0;a<scores.size();a++){
+				if((int)scores.get(a)==best){
+					q.add(moveScore.get(a));
+					u.add(pointmoving.get(a));
+					//System.out.print(moveScore.get(a)+" ");
+				}
+			}
+			int random=(int)(Math.random()*q.size());
+			System.out.println(random);
+			p2=new Point(q.get(random));
+			p1=new Point(u.get(random));
+			//need to track location of point going to move*/
 			makeMove(p1,p2);
 		}
 	
@@ -329,6 +355,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		//System.out.println(y);
 		//System.out.println(aiarr[x][y].toString().charAt(1));
 		int q=toInt(aiarr[x][y]);
+		
 		//System.out.println(q);
 		switch(q){
 		case 0://pawn
@@ -1152,7 +1179,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						aiarr=a1;//FIX
 					
 					}
-					if(x<8 &&y-1>=0 &&( aiarr[x+1][y+1].toString().charAt(0)=='B' || aiarr[x][y-1].toString().charAt(1)=='X')){
+					if(x<8 &&y-1>=0 &&( aiarr[x][y-1].toString().charAt(0)=='B' || aiarr[x][y-1].toString().charAt(1)=='X')){
 						Piece [][] arr0=new Piece[8][8];
 						for(int x1=0;x1<8;x1++){
 							for(int y1=0;y1<8;y1++){
@@ -2345,16 +2372,18 @@ if(threatened[i].toString().charAt(1)=='N')
 		test.checkThreats(b,'B');
 		
 		//test.checkMoves();
-		b.printBoard();
+		//b.printBoard();
 		//test.printThreats();
 		//boolean B=test.isThreatened(new Point(3,1));
 		//System.out.println(B);
-		/*Point[] a=test.canMove(new Point(5,6));
+		Point[] a=test.canMove(new Point(7,7));
 		for(int i=0;i<a.length;i++){
 			System.out.println(a[i]);
 		}*/
 	AI test1=new AI();
 	test1.setColor('W');
+	//AI test2=new AI();
+	//test2.setColor('B');
 	Board testBoard=new Board();
 		for(int i=0;i<10;i++){
 			test1.readBoard(testBoard);
@@ -2363,6 +2392,12 @@ if(threatened[i].toString().charAt(1)=='N')
 			testBoard.setBoardArray(test1.aiarr);
 			testBoard.printBoard();
 			System.out.println();
+			/*test2.readBoard(testBoard);
+			test2.checkThreats(testBoard, 'W');
+			test2.checkMoves();
+			testBoard.setBoardArray(test2.aiarr);
+			testBoard.printBoard();
+			System.out.println();*/
 
 		}
 	}
