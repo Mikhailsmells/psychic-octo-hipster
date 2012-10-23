@@ -43,6 +43,7 @@ public class AI {
 			
 				this.readBoard(b);
 				this.checkThreats(b, color);
+				this.checkPawn();
 				this.checkMoves();
 				b.setBoardArray(this.aiarr);
 				return b;
@@ -2382,8 +2383,8 @@ if(threatened[i].toString().charAt(1)=='N')
 		}*/
 	AI test1=new AI();
 	test1.setColor('W');
-	//AI test2=new AI();
-	//test2.setColor('B');
+	AI test2=new AI();
+	test2.setColor('B');
 	Board testBoard=new Board();
 		for(int i=0;i<10;i++){
 			test1.readBoard(testBoard);
@@ -2392,12 +2393,12 @@ if(threatened[i].toString().charAt(1)=='N')
 			testBoard.setBoardArray(test1.aiarr);
 			testBoard.printBoard();
 			System.out.println();
-			/*test2.readBoard(testBoard);
+			test2.readBoard(testBoard);
 			test2.checkThreats(testBoard, 'W');
 			test2.checkMoves();
 			testBoard.setBoardArray(test2.aiarr);
 			testBoard.printBoard();
-			System.out.println();*/
+			System.out.println();
 
 		}
 	}
