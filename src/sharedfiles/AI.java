@@ -45,7 +45,7 @@ public class AI {
 				this.readBoard(b);
 				this.checkThreats(b, color);
 				this.checkPawn();
-				System.out.println(l+" "+color);
+				/*(System.out.println(l+" "+color);
 				if(color=='W')
 				{
 					if(l<=6){
@@ -67,13 +67,14 @@ public class AI {
 					switch(l)
 					{
 					case 1: makeMove(new Point(6,1), new Point(6,2));l++;break;
-					case 2:/*System.out.println("CASE 2");*/ makeMove(new Point(6,0), new Point(5,2));l++;break;
+					case 2:/*System.out.println("CASE 2");*//* makeMove(new Point(6,0), new Point(5,2));l++;break;
 					//default: takeTurn(b);
 					}
 					}
 				}
 				if(color=='W' && l>=7) this.checkMoves();
-				else if(color=='B' && l>2)this.checkMoves();
+				else if(color=='B' && l>2)this.checkMoves();*/
+				this.checkMoves();
 				b.setBoardArray(this.aiarr);
 				return b;
 	//		}
