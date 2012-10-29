@@ -217,10 +217,10 @@ public class AI {
 							int score=0;
 							if(moves[i]!=null){
 								if(isThreatened(new Point(x,y))){
-									score+=toInt(aiarr[x][y]);
+									score+=(toInt(aiarr[x][y])+1);
 								}
 								if(aiarr[(int)moves[i].getX()][(int)moves[i].getY()].toString().charAt(1)!='X'){
-									score+=toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]);
+									score+=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()])+1);
 								}
 								Piece [][] arr0=new Piece[8][8];
 								for(int x1=0;x1<8;x1++){
@@ -232,7 +232,7 @@ public class AI {
 								aiarr=arr0;
 								makeMove(new Point(x,y),moves[i]);
 								if(isThreatened(moves[i])){
-									score-=toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]);
+									score-=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()])+1);
 								}
 								aiarr=a1;//FIX
 								if(score>=best){
