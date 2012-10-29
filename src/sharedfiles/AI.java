@@ -15,6 +15,7 @@ public class AI {
 	Point loc1;// piece threatened //threateningscore
 	Point loc2;// piece threatening
 	int numTurns=0;
+	int l=1;
 	public AI(){
 		
 	}
@@ -44,7 +45,35 @@ public class AI {
 				this.readBoard(b);
 				this.checkThreats(b, color);
 				this.checkPawn();
-				this.checkMoves();
+				System.out.println(l+" "+color);
+				if(color=='W')
+				{
+					if(l<=6){
+					switch(l)
+					{
+					case 1: makeMove(new Point(4,6), new Point(4,4));l++;break;
+					case 2: makeMove(new Point(6,7), new Point(5,5));l++;break;
+					case 3: makeMove(new Point(3,6), new Point(3,5));l++;break;
+					case 4: makeMove(new Point(6,6), new Point(6,5));l++;break;
+					case 5: makeMove(new Point(5,7), new Point(6,6));l++;break;
+					case 6: makeMove(new Point(1,7), new Point(3,6));l++;break;
+					//default: takeTurn(b);
+					}
+					}//if l
+				}
+				if(color=='B')
+				{	
+					if(l<=2){
+					switch(l)
+					{
+					case 1: makeMove(new Point(6,1), new Point(6,2));l++;break;
+					case 2:/*System.out.println("CASE 2");*/ makeMove(new Point(6,0), new Point(5,2));l++;break;
+					//default: takeTurn(b);
+					}
+					}
+				}
+				if(color=='W' && l>=7) this.checkMoves();
+				else if(color=='B' && l>2)this.checkMoves();
 				b.setBoardArray(this.aiarr);
 				return b;
 	//		}
@@ -242,6 +271,33 @@ public class AI {
 			makeMove(p1,p2);
 		}
 	
+	public Board takeInitialTurns(Board b, int l)
+	{
+		//b.setBoardArray(this.aiarr);
+		if(color=='W')
+		{
+			switch(l)
+			{
+			case 1: makeMove(new Point(4,6), new Point(4,4));l++;break;
+			case 2: makeMove(new Point(6,7), new Point(5,5));l++;break;
+			case 3: makeMove(new Point(3,6), new Point(3,5));l++;break;
+			case 4: makeMove(new Point(6,6), new Point(6,5));l++;break;
+			case 5: makeMove(new Point(5,7), new Point(6,6));l++;break;
+			case 6: makeMove(new Point(1,7), new Point(3,6));l++;break;
+			default: takeTurn(b);
+			}
+		}
+		if(color=='B')
+		{
+			switch(l)
+			{
+			case 1: makeMove(new Point(6,1), new Point(6,2));break;
+			case 2: makeMove(new Point(6,0), new Point(5,2));break;
+			default: takeTurn(b);
+			}
+		}
+		return b;
+	}
 	/*public void checkMoves(Board b){
 		checkThreats(b,color);
 		int Level1=0;//level of piece threatened
@@ -2387,16 +2443,20 @@ if(threatened[i].toString().charAt(1)=='N')
 	test2.setColor('B');
 	Board testBoard=new Board();
 		for(int i=0;i<10;i++){
-			test1.readBoard(testBoard);
+			/*test1.readBoard(testBoard);
 			test1.checkThreats(testBoard, 'W');
+			test1.checkPawn();
 			test1.checkMoves();
-			testBoard.setBoardArray(test1.aiarr);
+			testBoard.setBoardArray(test1.aiarr);*/
+			test1.takeTurn(testBoard);
 			testBoard.printBoard();
 			System.out.println();
-			test2.readBoard(testBoard);
+			/*test2.readBoard(testBoard);
 			test2.checkThreats(testBoard, 'W');
+			test2.checkPawn();
 			test2.checkMoves();
-			testBoard.setBoardArray(test2.aiarr);
+			testBoard.setBoardArray(test2.aiarr);*/
+			test2.takeTurn(testBoard);
 			testBoard.printBoard();
 			System.out.println();
 

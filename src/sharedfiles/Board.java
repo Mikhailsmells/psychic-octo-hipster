@@ -51,19 +51,18 @@ public class Board {
 		arr = pieces; 
 	}
 
-	public void printBoard(){ 
-		for(int y=0; y<8; y++){
+	public void printBoard() {
+		for (int y = 0; y < 8; y++) {
 
-			for(int x=0; x<8; x++){
-				System.out.print(arr[x][y].toString()+" | ");
+			for (int x = 0; x < 8; x++) {
+				System.out.print((arr[x][y].toString().equals("WX") ? "  " : arr[x][y].toString()) + " | ");
 			}
-
 			System.out.println();
+
 		}
 
-		return ; 
+		return;
 	}
-
 	public static void main (String args[]){
 		Board a = new Board();
 		a.printBoard();
