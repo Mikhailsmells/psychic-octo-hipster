@@ -42,12 +42,12 @@ public class AI {
 	
 			
 	public Board takeTurn(Board b){
-			if(color=='W')	
+			//if(color=='W')	
 				/*if(l<7)
 				{
 					takeInitialTurns(b);
 				}*/
-				this.readBoard(b);
+				/*this.readBoard(b);
 				aiarr=b.getBoardArray();
 				this.checkThreats(b, color);
 				this.checkPawn();
@@ -60,9 +60,15 @@ public class AI {
 				
 				/*if(color=='W' && l>7) this.checkMoves();
 				else if(color=='B' && l>3)this.checkMoves();*/
-				this.checkMoves();
-				return b;
-				
+				/*this.checkMoves();
+				return b;*/
+		this.readBoard(b);
+		aiarr=b.getBoardArray();
+		this.checkThreats(b, color);
+		this.checkPawn();
+		this.checkMoves();
+		b.setBoardArray(this.aiarr);
+		return b;		
 		}
 	
 	
@@ -2506,21 +2512,26 @@ if(threatened[i].toString().charAt(1)=='N')
 	Board testBoard=new Board();
 			for(int i=1;i<30;i++)
 			{
-			test1.readBoard(testBoard);
+			/*test1.readBoard(testBoard);
 			test1.checkThreats(testBoard, 'W');
 			test1.checkPawn();
 			test1.checkMoves();
 			testBoard.setBoardArray(test1.aiarr);
 			testBoard.printBoard();
+			System.out.println();*/
+			test1.takeTurn(testBoard);
+			testBoard.printBoard();
 			System.out.println();
-			
-			test2.readBoard(testBoard);
+			test2.takeTurn(testBoard);
+			testBoard.printBoard();
+			System.out.println();
+			/*test2.readBoard(testBoard);
 			test2.checkThreats(testBoard, 'B');
 			test2.checkPawn();
 			test2.checkMoves();
 			testBoard.setBoardArray(test2.aiarr);
 			testBoard.printBoard();
-			System.out.println();
+			System.out.println();*/
 			
 			/*test1.takeTurn(testBoard);
 			testBoard.printBoard();
