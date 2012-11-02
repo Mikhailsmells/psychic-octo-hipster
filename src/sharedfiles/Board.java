@@ -46,7 +46,7 @@ public class Board {
 	public Piece[][] getBoardArray(){
 		return arr; 
 	}
-
+	
 	public void setBoardArray(Piece[][] pieces){
 		arr = pieces; 
 	}

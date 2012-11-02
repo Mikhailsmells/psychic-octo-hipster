@@ -39,45 +39,31 @@ public class AI {
 			}
 		}
 	}
-	public Board takeTurn(Board b){
-		
+	
 			
+	public Board takeTurn(Board b){
+			if(color=='W')	
+				/*if(l<7)
+				{
+					takeInitialTurns(b);
+				}*/
 				this.readBoard(b);
+				aiarr=b.getBoardArray();
 				this.checkThreats(b, color);
 				this.checkPawn();
-				/*(System.out.println(l+" "+color);
-				if(color=='W')
-				{
-					if(l<=6){
-					switch(l)
-					{
-					case 1: makeMove(new Point(4,6), new Point(4,4));l++;break;
-					case 2: makeMove(new Point(6,7), new Point(5,5));l++;break;
-					case 3: makeMove(new Point(3,6), new Point(3,5));l++;break;
-					case 4: makeMove(new Point(6,6), new Point(6,5));l++;break;
-					case 5: makeMove(new Point(5,7), new Point(6,6));l++;break;
-					case 6: makeMove(new Point(1,7), new Point(3,6));l++;break;
-					//default: takeTurn(b);
-					}
-					}//if l
-				}
-				if(color=='B')
-				{	
-					if(l<=2){
-					switch(l)
-					{
-					case 1: makeMove(new Point(6,1), new Point(6,2));l++;break;
-					case 2:/*System.out.println("CASE 2");*//* makeMove(new Point(6,0), new Point(5,2));l++;break;
-					//default: takeTurn(b);
-					}
-					}
-				}
-				if(color=='W' && l>=7) this.checkMoves();
-				else if(color=='B' && l>2)this.checkMoves();*/
-				this.checkMoves();
+				
+				//(System.out.println(l+" "+color);
+				
+			
 				b.setBoardArray(this.aiarr);
+				
+				
+				/*if(color=='W' && l>7) this.checkMoves();
+				else if(color=='B' && l>3)this.checkMoves();*/
+				this.checkMoves();
 				return b;
-	//		}
+				
+		}
 	
 	
 		/*if(color=='W')
@@ -119,7 +105,9 @@ public class AI {
 			}
 		}
 			return null;*/
-	}
+	
+
+
 	
 	public void readBoard(Board b)
 		{
@@ -218,10 +206,10 @@ public class AI {
 							int score=0;
 							if(moves[i]!=null){
 								if(isThreatened(new Point(x,y))){
-									score+=(toInt(aiarr[x][y])+1);
+									score+=(toInt(aiarr[x][y]));
 								}
 								if(aiarr[(int)moves[i].getX()][(int)moves[i].getY()].toString().charAt(1)!='X'){
-									score+=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()])+1);
+									score+=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]));
 								}
 								Piece [][] arr0=new Piece[8][8];
 								for(int x1=0;x1<8;x1++){
@@ -233,7 +221,7 @@ public class AI {
 								aiarr=arr0;
 								makeMove(new Point(x,y),moves[i]);
 								if(isThreatened(moves[i])){
-									score-=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()])+1);
+									score-=(toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]));
 								}
 								aiarr=a1;//FIX
 								if(score>=best){
@@ -272,20 +260,20 @@ public class AI {
 			makeMove(p1,p2);
 		}
 	
-	public Board takeInitialTurns(Board b, int l)
+	public Board takeInitialTurns(Board b)
 	{
-		//b.setBoardArray(this.aiarr);
+		aiarr=b.getBoardArray();
 		if(color=='W')
 		{
 			switch(l)
 			{
-			case 1: makeMove(new Point(4,6), new Point(4,4));l++;break;
-			case 2: makeMove(new Point(6,7), new Point(5,5));l++;break;
-			case 3: makeMove(new Point(3,6), new Point(3,5));l++;break;
-			case 4: makeMove(new Point(6,6), new Point(6,5));l++;break;
-			case 5: makeMove(new Point(5,7), new Point(6,6));l++;break;
-			case 6: makeMove(new Point(1,7), new Point(3,6));l++;break;
-			default: takeTurn(b);
+			case 1: makeMove(new Point(4,6), new Point(4,4));break;
+			case 2: makeMove(new Point(6,7), new Point(5,5));break;
+			case 3: makeMove(new Point(3,6), new Point(3,5));break;
+			case 4: makeMove(new Point(6,6), new Point(6,5));break;
+			case 5: makeMove(new Point(5,7), new Point(6,6));break;
+			case 6: makeMove(new Point(1,7), new Point(3,6));break;
+			
 			}
 		}
 		if(color=='B')
@@ -294,9 +282,11 @@ public class AI {
 			{
 			case 1: makeMove(new Point(6,1), new Point(6,2));break;
 			case 2: makeMove(new Point(6,0), new Point(5,2));break;
-			default: takeTurn(b);
+			
 			}
 		}
+		b.setBoardArray(this.aiarr);
+		this.l++;
 		return b;
 	}
 	/*public void checkMoves(Board b){
@@ -416,7 +406,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		
 		//System.out.println(q);
 		switch(q){
-		case 0://pawn
+		case 1://pawn
 			if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 				Point[] moves=new Point[4];
 				if((x+1<8 && y-1>=0) &&aiarr[x+1][y-1].toString().charAt(0)=='B'){
@@ -451,7 +441,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				return moves;
 			}
 			break;
-		case 1:
+		case 3://knight
 			if(aiarr[x][y].toString().charAt(0)=='W'){
 				Point[] moves=new Point[8];
 				if(x+1<8 &&y+2<8 &&( aiarr[x+1][y+2].toString().charAt(0)=='B' || aiarr[x+1][y+2].toString().charAt(1)=='X')){
@@ -509,7 +499,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				return moves;
 			}
 			break;
-		case 2:
+		case 4://bishop
 			if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 				Point[] moves=new Point[100];
 				int numBishop=0;
@@ -659,7 +649,7 @@ if(threatened[i].toString().charAt(1)=='N')
 				return moves;
 				}//color
 			break;
-		case 3:
+		case 5:
 				if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 					int numRook=0;
 					Point[] moves=new Point[20];
@@ -799,7 +789,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						return moves;
 				}
 				break;
-			case 4:
+			case 9:
 				if(aiarr[x][y].toString().charAt(0)=='W'){//color of piece
 					int numQueen=0;
 					Point[] moves=new Point[100];
@@ -1074,7 +1064,7 @@ if(threatened[i].toString().charAt(1)=='N')
 					return moves;
 				}//color
 				break;
-			case 5: 
+			case 50: 
 				/*if(aiarr[x][y].toString().charAt(0)=='W'){
 					Point[] moves=new Point[8];
 					if(x+1<8 &&y+1<8 &&( aiarr[x+1][y+1].toString().charAt(0)=='B' || aiarr[x+1][y+1].toString().charAt(1)=='X')){
@@ -1422,17 +1412,17 @@ if(threatened[i].toString().charAt(1)=='N')
 	
 	public int toInt(Piece p){
 		if(p.toString().charAt(1)== 'P')
-			return 0;
-		if(p.toString().charAt(1)=='N')
 			return 1;
-		if(p.toString().charAt(1)=='B')
-			return 2;
-		if(p.toString().charAt(1)== 'R')
+		if(p.toString().charAt(1)=='N')
 			return 3;
-		if(p.toString().charAt(1)== 'Q')
+		if(p.toString().charAt(1)=='B')
 			return 4;
-		if(p.toString().charAt(1)== 'K')
+		if(p.toString().charAt(1)== 'R')
 			return 5;
+		if(p.toString().charAt(1)== 'Q')
+			return 9;
+		if(p.toString().charAt(1)== 'K')
+			return 50;
 		if(p.toString().charAt(1)== 'X')
 			return 6;
 		return 80;
@@ -1450,7 +1440,7 @@ if(threatened[i].toString().charAt(1)=='N')
 					//int x=3;
 					//int y=5;
 					switch(q){
-						case 0: if(color=='W'){//pawn
+						case 1: if(color=='W'){//pawn
 							
 								if(x+1<8 && y+1<8){
 								if((aiarr[x+1][y+1].toString().charAt(0)=='W')&& aiarr[x+1][y+1].toString().charAt(1)!='X'){
@@ -1498,7 +1488,7 @@ if(threatened[i].toString().charAt(1)=='N')
 								
 								}
 								break;
-						case 1: if(color=='W'){//KNIGHT
+						case 3: if(color=='W'){//KNIGHT
 							
 							if(x+1<8 && y+2<8){
 							if((aiarr[x+1][y+2].toString().charAt(0)=='W')&& aiarr[x+1][y+2].toString().charAt(1)!='X'){
@@ -1669,7 +1659,7 @@ if(threatened[i].toString().charAt(1)=='N')
 							
 							}
 							break;
-					case 2: if(color=='W'){//bishop
+					case 4: if(color=='W'){//bishop
 			
 						for(int i=x+1;i<8;i++){//Diagonal //ToDo-check if x+1 is out of bounds
 							if(y+i-x<8 && y+i-x>=0){
@@ -1807,7 +1797,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						
 					}
 					break;
-						case 3: if(color=='W'){// Rook
+						case 5: if(color=='W'){// Rook
 									for(int i=x+1;i<8;i++){
 										 if(aiarr[i][y].toString().charAt(0)=='B'){
 											 i=8;
@@ -1945,7 +1935,7 @@ if(threatened[i].toString().charAt(1)=='N')
 						
 									break;
 								
-								case 4: if(color=='W'){//Queen
+								case 9: if(color=='W'){//Queen
 						
 									for(int i=x+1;i<8;i++){
 										if(aiarr[i][y].toString().charAt(0)=='B'){
@@ -2206,7 +2196,7 @@ if(threatened[i].toString().charAt(1)=='N')
 									
 								
 								break;
-								case 5: if(color=='W'){//KING
+								case 50: if(color=='W'){//KING
 									
 									if(x+1<8 && y+1<8){
 									if((aiarr[x+1][y+1].toString().charAt(0)=='W') && aiarr[x+1][y+1].toString().charAt(1)!='X'){
@@ -2393,6 +2383,65 @@ if(threatened[i].toString().charAt(1)=='N')
 	Piece q=aiarr[x][y];
 	return q.toString();
 	}
+	public boolean checkCheck(Board b)
+	{
+		this.readBoard(b);
+		for(int i=0;i<8;i++)
+		{
+			String q= new String();
+			for(int j=0;j<8;j++)
+			{
+			 q= this.checkPiece(i,j);
+			 if(q=="K")
+			 {
+				boolean c= this.isThreatened(new Point(i,j));
+				if(c=true)
+				{
+					System.out.println("Check");
+					return true;
+				}
+				 
+			 }
+			}
+		}
+		return false;
+	}
+	public boolean checkCheckmate(Board b)
+	{
+		this.readBoard(b);
+		boolean d= this.checkCheck(b);
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				if(this.checkPiece(i, j)=="K")
+				{
+					Point[] $=this.canMove(new Point(i,j));
+					for(int n=0;n<$.length;n++)
+					{
+						this.makeMove(new Point(i,j),$[n]);
+						Board c=new Board();
+						c.setBoardArray(aiarr);
+						boolean e=this.checkCheck(c);
+						if(e=true)
+						{
+							System.out.println("You Lose");
+							return true;
+						}
+						if(e=false)
+						{
+							return false;
+						}
+						
+					}
+					
+				}
+					
+			}
+		}
+		return false;
+	}
+
 	public void printThreats(){
 		for(int i=0;i<numThreatened;i++){
 			//System.out.println(numThreatened);
@@ -2403,6 +2452,17 @@ if(threatened[i].toString().charAt(1)=='N')
 			
 		}
 	}
+	/*public boolean check(){
+		for(int x=0;x<8;x++){
+			for(int y=0;y<8;y++){
+				if(aiarr[x][y].toString().charAt(0)==color && aiarr[x][y].toString().charAt(1)=='K'){
+					if(isThreatened(new Point(x,y))){
+						
+					}
+				}
+			}
+		}
+	}*/
 	
 	public static void main(String[] args){
 		/*AI test=new AI();
@@ -2441,27 +2501,55 @@ if(threatened[i].toString().charAt(1)=='N')
 	AI test1=new AI();
 	test1.setColor('W');
 	AI test2=new AI();
+	Scanner s=new Scanner(System.in);
 	test2.setColor('B');
 	Board testBoard=new Board();
-		for(int i=0;i<10;i++){
-			/*test1.readBoard(testBoard);
+			for(int i=1;i<30;i++)
+			{
+			test1.readBoard(testBoard);
 			test1.checkThreats(testBoard, 'W');
 			test1.checkPawn();
 			test1.checkMoves();
-			testBoard.setBoardArray(test1.aiarr);*/
-			test1.takeTurn(testBoard);
+			testBoard.setBoardArray(test1.aiarr);
 			testBoard.printBoard();
 			System.out.println();
+			
+			test2.readBoard(testBoard);
+			test2.checkThreats(testBoard, 'B');
+			test2.checkPawn();
+			test2.checkMoves();
+			testBoard.setBoardArray(test2.aiarr);
+			testBoard.printBoard();
+			System.out.println();
+			
+			/*test1.takeTurn(testBoard);
+			testBoard.printBoard();
+			System.out.println();*/
+		
+			/*test2.takeTurn(testBoard);
+			testBoard.printBoard();
+			System.out.println();*/
+			
+			//testBoard.printBoard();
+			//System.out.println();
+			//test2.takeInitialTurns(testBoard,i);
 			/*test2.readBoard(testBoard);
 			test2.checkThreats(testBoard, 'W');
 			test2.checkPawn();
 			test2.checkMoves();
+			//testBoard.setBoardArray(test2.aiarr);
+			
+			/*String q=s.nextLine();
+			int a=Character.getNumericValue(q.charAt(0));
+			int b=Character.getNumericValue(q.charAt(1));
+			int c=Character.getNumericValue(q.charAt(2));
+			int d=Character.getNumericValue(q.charAt(3));
+			test2.makeMove(new Point(a,b),new Point(c,d));
 			testBoard.setBoardArray(test2.aiarr);*/
-			test2.takeTurn(testBoard);
-			testBoard.printBoard();
-			System.out.println();
+			}
+			
 
-		}
+		
 	}
 	
 	
