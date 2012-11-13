@@ -55,6 +55,8 @@ public class Board {
 		for (int y = 0; y < 8; y++) {
 
 			for (int x = 0; x < 8; x++) {
+				//System.out.print(arr[x][y].toString()+" | ");
+				
 				System.out.print((arr[x][y].toString().equals("WX") ? "  " : arr[x][y].toString()) + " | ");
 			}
 			System.out.println();
