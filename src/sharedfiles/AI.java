@@ -193,6 +193,8 @@ public class AI {
 			c='W';
 		}
 		else c='B';
+		Board b=new Board();
+		b.setBoardArray(aiarr);
 		//System.out.println(c);
 		int best=-1;
 		Point p1=new Point(0,0);//piece to move
@@ -236,10 +238,12 @@ public class AI {
 									Piece [][] aq=aiarr;
 									aiarr=arrq;
 									makeMove(new Point(x,y),moves[i]);
+									checkThreats(b,color);
 									if(!isThreatened(new Point(kx,ky))){
 										score+=999999;
 									}
 									aiarr=aq;
+									checkThreats(b,color);
 								}
 								/*Piece [][] arr0=new Piece[8][8];
 								for(int x1=0;x1<8;x1++){
@@ -259,10 +263,12 @@ public class AI {
 									Piece [][] a1=aiarr;
 									aiarr=arr0;
 									makeMove(new Point(x,y),moves[i]);
+									checkThreats(b,color);
 									if(!isThreatened(moves[i])){
 										score+=(toInt(aiarr[moves[i].x][moves[i].y]));
 									}
 									aiarr=a1;
+									checkThreats(b,color);
 									//score+=(toInt(aiarr[x][y]));
 								}
 								if(aiarr[(int)moves[i].getX()][(int)moves[i].getY()].toString().charAt(1)!='X'){
@@ -277,6 +283,7 @@ public class AI {
 								Piece [][] a1=aiarr;
 								aiarr=arr0;
 								makeMove(new Point(x,y),moves[i]);
+								checkThreats(b,color);
 								if(isThreatened(moves[i])){
 									/*if(aiarr[moves[i].x][moves[i].y].toString().charAt(1)=='K'){
 									score-=1000000000*(toInt(aiarr[moves[i].x][moves[i].y]));
@@ -294,6 +301,7 @@ public class AI {
 									score-=(toInt(aiarr[moves[i].x][moves[i].y]));
 							}
 								aiarr=a1;//FIX
+								checkThreats(b,color);
 								if(score>=best){
 									best=score;
 									moveScore.add(moves[i]);
@@ -2608,7 +2616,7 @@ if(threatened[i].toString().charAt(1)=='N')
 		for(int i=0;i<a.length;i++){
 			System.out.println(a[i]);
 		}*/
-	User u1=new User();
+	//User u1=new User();
 	AI test1=new AI();
 	test1.setColor('W');
 	AI test2=new AI();
