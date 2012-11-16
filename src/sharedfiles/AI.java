@@ -302,7 +302,7 @@ public class AI {
 						//	}
 								aiarr=a1;//FIX
 								checkThreats(b,color);
-								if(score>=best){
+								if(score>=best && aiarr[x][y].toString().charAt(1)!='K'){
 									best=score;
 									moveScore.add(moves[i]);
 									scores.add(score);
