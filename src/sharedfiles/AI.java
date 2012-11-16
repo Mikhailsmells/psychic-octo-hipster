@@ -333,8 +333,8 @@ public class AI {
 			}
 			int random=(int)(Math.random()*q.size());
 			//System.out.println(random);
-			p2=new Point(q.get(random));
-			p1=new Point(u.get(random));
+			if(q.size()>=1)p2=new Point(q.get(random));
+			if(q.size()>=1)p1=new Point(u.get(random));
 			//need to track location of point going to move*/
 			makeMove(p1,p2);
 		}
