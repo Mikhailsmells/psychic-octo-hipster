@@ -292,13 +292,13 @@ public class AI {
 										for(int y3=0;y3<8;y3++){
 											if(aiarr[x3][y3].toString().charAt(1)=='K'){
 												if(isThreatened(new Point(x3,y3))){
-													score-=99999;
+													score-=9999999;
 												}
 											}
 										}
 									}
 								
-									score-=(toInt(aiarr[moves[i].x][moves[i].y]));
+									//score-=.3*(toInt(aiarr[moves[i].x][moves[i].y]));//multiplier maybe
 							}
 								aiarr=a1;//FIX
 								checkThreats(b,color);
@@ -2623,7 +2623,7 @@ if(threatened[i].toString().charAt(1)=='N')
 	Scanner s=new Scanner(System.in);
 	test2.setColor('B');
 	Board testBoard=new Board();
-			for(int i=1;i<100;i++)
+			for(int i=1;i<50;i++)
 			{
 				System.out.println("TURN"+i);
 			/*testBoard.printBoard();
