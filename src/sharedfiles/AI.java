@@ -284,7 +284,7 @@ public class AI {
 								aiarr=arr0;
 								makeMove(new Point(x,y),moves[i]);
 								checkThreats(b,color);
-								if(isThreatened(moves[i])){
+								//if(isThreatened(moves[i])){
 									/*if(aiarr[moves[i].x][moves[i].y].toString().charAt(1)=='K'){
 									score-=1000000000*(toInt(aiarr[moves[i].x][moves[i].y]));
 									}*/
@@ -299,7 +299,7 @@ public class AI {
 									}
 								
 									//score-=.3*(toInt(aiarr[moves[i].x][moves[i].y]));//multiplier maybe
-							}
+						//	}
 								aiarr=a1;//FIX
 								checkThreats(b,color);
 								if(score>=best){
