@@ -242,7 +242,7 @@ public class AI {
 									//System.out.println(new Point(x,y));
 									//System.out.println(moves[i]);
 									//System.out.println("score 1 "+score);
-									score-=0.5*toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]);
+									score-=toInt(aiarr[(int)moves[i].getX()][(int)moves[i].getY()]);
 									//if(isThreatened(new Point(x,y))){
 									//score-=toInt(aiarr[x][y]);
 									//}
